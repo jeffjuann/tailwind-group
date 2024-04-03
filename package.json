@@ -2,14 +2,18 @@
   "name": "tailwind-group",
   "version": "1.0.0",
   "description": "Group Tailwind CSS Classes & States",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
     "test": "jest test --config scripts/jest.config.mjs --coverage"
   },
   "author": "jeffjuann",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^29.5.12",
+    "tsup": "^8.0.2",
     "typescript": "^5.4.3"
   },
   "dependencies": {
