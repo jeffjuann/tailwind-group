@@ -1,12 +1,13 @@
 {
   "name": "tailwind-group",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Group Tailwind CSS Classes & States",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "tsc",
     "test": "jest test --config scripts/jest.config.mjs --coverage"
   },
   "author": "jeffjuann",
@@ -17,6 +18,7 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "@changesets/cli": "^2.27.1",
     "tailwind-merge": "^2.2.2"
   }
 }
