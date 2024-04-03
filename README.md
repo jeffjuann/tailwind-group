@@ -6,7 +6,7 @@ Streamline the grouping of Tailwind CSS classes and states with tailwind-group, 
 
 This package facilitates the consolidation of disparate Tailwind CSS class strings into concise and legible formats, ensuring optimal readability and maintainability of your codebase. By harnessing the robust features of tailwind-merge, tailwind-group achieves efficient class merging, eliminating redundancies and optimizing CSS output for enhanced performance
 
-This package uses [tailwind-merge](https://github.com/dcastil/tailwind-merge) package to provide composition feature. please use and see [tailwind-merge](https://github.com/dcastil/tailwind-merge) package for more Merging, Composition and Performace Features.
+This package uses [tailwind-merge](https://github.com/dcastil/tailwind-merge) package to provide composition feature. Please use and see [tailwind-merge](https://github.com/dcastil/tailwind-merge) package for more Merging, Composition and Performace Features.
 
 ```ts
 import { twOnHover } from 'tailwind-group'

@@ -100,5 +100,5 @@ export function twOnPrint(...classNames: ClassNameValue[]): string
 
 export function twOnSupportRules(rule: string, ...classNames: ClassNameValue[]): string
 {
-  return twOn(`support-${rule}`, ...classNames);
+  return twOn(`supports-${rule}`, ...classNames);
 }

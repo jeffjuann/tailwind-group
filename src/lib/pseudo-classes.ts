@@ -144,7 +144,7 @@ export function twOnGroupHas(state: string, ...classNames: ClassNameValue[]): st
   return twOn(`group-has-${state}`, ...classNames);
 }
 
-export function twOnPeerHas(state: string, ...classNames: ClassNameValue[]): string
+export function twOnSiblingHas(state: string, ...classNames: ClassNameValue[]): string
 {
   return twOn(`peer-has-${state}`, ...classNames);
 }
