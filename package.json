@@ -1,6 +1,6 @@
 {
   "name": "tailwind-group",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Group Tailwind CSS Classes & States",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,12 +17,12 @@
   "author": "jeffjuann",
   "license": "MIT",
   "devDependencies": {
+    "@changesets/cli": "^2.27.1",
     "@types/jest": "^29.5.12",
     "tsup": "^8.0.2",
     "typescript": "^5.4.3"
   },
   "dependencies": {
-    "@changesets/cli": "^2.27.1",
     "tailwind-merge": "^2.2.2"
   }
 }
