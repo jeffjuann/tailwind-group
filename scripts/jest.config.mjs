@@ -3,5 +3,5 @@
 export default {
   rootDir: '..',
   preset: 'ts-jest',
-  testMatch: ['<rootDir>/@(src|tests)/**/?(*.)test.ts'],
+  testMatch: ['<rootDir>/tests/**/*.test.ts'],
 }

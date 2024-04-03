@@ -25,8 +25,8 @@ import {
 test('custom on modifier', () =>
 {
   expect(twOn('hover','bg-neutral-500')).toBe('hover:bg-neutral-500');
-  expect(twOn('[&:nth-child(3)]', 'text-medium underline')).toBe('[&:nth-child(3)]:underline [&:nth-child(3)]:text-medium');
-  expect(twOn('lg:[&:nth-child(3)]:hover:', 'underline bg-neutral-500')).toBe('lg:[&:nth-child(3)]:hover:bg-neutral-500 lg:[&:nth-child(3)]:hover:underline');
+  expect(twOn('[&:nth-child(3)]', 'text-medium underline')).toBe('[&:nth-child(3)]:text-medium [&:nth-child(3)]:underline');
+  expect(twOn('lg:[&:nth-child(3)]:hover', 'underline bg-neutral-500')).toBe('lg:[&:nth-child(3)]:hover:underline lg:[&:nth-child(3)]:hover:bg-neutral-500');
 });
 
 test('on hover modifier', () =>
@@ -91,20 +91,20 @@ test('on disabled modifier', () =>
 
 test('on group modifier', () =>
 {
-  expect(twOnGroup('hover/item', 'text-red-500 underline')).toBe('hover:text-red-500 hover:underline');
-  expect(twOnGroup('hover/item', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('hover:text-red-500 hover:underline hover:bg-green-500 hover:font-bold');
+  expect(twOnGroup('hover/item', 'text-red-500 underline')).toBe('group-hover/item:text-red-500 group-hover/item:underline');
+  expect(twOnGroup('hover/item', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('group-hover/item:text-red-500 group-hover/item:underline group-hover/item:bg-green-500 group-hover/item:font-bold');
 });
 
 test('on group hover modifier', () =>
 {
-  expect(twOnGroupHover('text-red-500 underline')).toBe('hover:text-red-500 hover:underline');
-  expect(twOnGroupHover('text-red-500 underline', 'bg-green-500 font-bold')).toBe('hover:text-red-500 hover:underline hover:bg-green-500 hover:font-bold');
+  expect(twOnGroupHover('text-red-500 underline')).toBe('group-hover:text-red-500 group-hover:underline');
+  expect(twOnGroupHover('text-red-500 underline', 'bg-green-500 font-bold')).toBe('group-hover:text-red-500 group-hover:underline group-hover:bg-green-500 group-hover:font-bold');
 });
 
 test('on group focus modifier', () =>
 {
-  expect(twOnGroupFocus('text-red-500 underline')).toBe('focus:text-red-500 focus:underline');
-  expect(twOnGroupFocus('text-red-500 underline', 'bg-green-500 font-bold')).toBe('focus:text-red-500 focus:underline focus:bg-green-500 focus:font-bold');
+  expect(twOnGroupFocus('text-red-500 underline')).toBe('group-focus:text-red-500 group-focus:underline');
+  expect(twOnGroupFocus('text-red-500 underline', 'bg-green-500 font-bold')).toBe('group-focus:text-red-500 group-focus:underline group-focus:bg-green-500 group-focus:font-bold');
 });
 
 // generate with many functions (twOnSibling twOnSiblingHover twOnSiblingFocus twOnChild twOnHas twOnGroupHas twOnGroupSiblingHas)
@@ -117,36 +117,36 @@ test('on sibling modifier', () =>
 
 test('on sibling hover modifier', () =>
 {
-  expect(twOnSiblingHover('text-red-500 underline')).toBe('peer:hover:text-red-500 peer:hover:underline');
-  expect(twOnSiblingHover('text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer:hover:text-red-500 peer:hover:underline peer:hover:bg-green-500 peer:hover:font-bold');
+  expect(twOnSiblingHover('text-red-500 underline')).toBe('peer-hover:text-red-500 peer-hover:underline');
+  expect(twOnSiblingHover('text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer-hover:text-red-500 peer-hover:underline peer-hover:bg-green-500 peer-hover:font-bold');
 });
 
 test('on sibling focus modifier', () =>
 {
-  expect(twOnSiblingFocus('text-red-500 underline')).toBe('peer:focus:text-red-500 peer:focus:underline');
-  expect(twOnSiblingFocus('text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer:focus:text-red-500 peer:focus:underline peer:focus:bg-green-500 peer:focus:font-bold');
+  expect(twOnSiblingFocus('text-red-500 underline')).toBe('peer-focus:text-red-500 peer-focus:underline');
+  expect(twOnSiblingFocus('text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer-focus:text-red-500 peer-focus:underline peer-focus:bg-green-500 peer-focus:font-bold');
 });
 
 test('on child modifier', () =>
 {
-  expect(twOnChild('text-red-500 underline')).toBe('child:text-red-500 child:underline');
-  expect(twOnChild('text-red-500 underline', 'bg-green-500 font-bold')).toBe('child:text-red-500 child:underline child:bg-green-500 child:font-bold');
+  expect(twOnChild('text-red-500 underline')).toBe('*:text-red-500 *:underline');
+  expect(twOnChild('text-red-500 underline', 'bg-green-500 font-bold')).toBe('*:text-red-500 *:underline *:bg-green-500 *:font-bold');
 });
 
 test('on has modifier', () =>
 {
-  expect(twOnHas('','text-red-500 underline')).toBe('has:text-red-500 has:underline');
-  expect(twOnHas('','text-red-500 underline', 'bg-green-500 font-bold')).toBe('has:text-red-500 has:underline has:bg-green-500 has:font-bold');
+  expect(twOnHas('[a]','text-red-500 underline')).toBe('has-[a]:text-red-500 has-[a]:underline');
+  expect(twOnHas('[a]','text-red-500 underline', 'bg-green-500 font-bold')).toBe('has-[a]:text-red-500 has-[a]:underline has-[a]:bg-green-500 has-[a]:font-bold');
 });
 
 test('on group has modifier', () =>
 {
-  expect(twOnGroupHas('[a]', 'text-red-500 underline')).toBe('group-has:text-red-500 group-has:underline');
-  expect(twOnGroupHas('[a]', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('group-has:text-red-500 group-has:underline group-has:bg-green-500 group-has:font-bold');
+  expect(twOnGroupHas('[a]', 'text-red-500 underline')).toBe('group-has-[a]:text-red-500 group-has-[a]:underline');
+  expect(twOnGroupHas('[a]', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('group-has-[a]:text-red-500 group-has-[a]:underline group-has-[a]:bg-green-500 group-has-[a]:font-bold');
 });
 
 test('on sibling has modifier', () =>
 {
-  expect(twOnSiblingHas('[a]', 'text-red-500 underline')).toBe('peer-has:text-red-500 peer-has:underline');
-  expect(twOnSiblingHas('[a]', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer-has:text-red-500 peer-has:underline peer-has:bg-green-500 peer-has:font-bold');
+  expect(twOnSiblingHas('[a]', 'text-red-500 underline')).toBe('peer-has-[a]:text-red-500 peer-has-[a]:underline');
+  expect(twOnSiblingHas('[a]', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer-has-[a]:text-red-500 peer-has-[a]:underline peer-has-[a]:bg-green-500 peer-has-[a]:font-bold');
 });
