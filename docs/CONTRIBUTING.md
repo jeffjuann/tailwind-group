@@ -1,6 +1,5 @@
 # Contribution Guide
-Thanks for your interest in contributing to tailwind-group. We're happy to have you here. Please take a moment to review this document before submitting your first pull request. We also strongly recommend that you check for open issues and pull requests to see if someone else is working on something similar.
-
+Thanks for your interest in contributing to tailwind-group. We're happy to have you here. Please take a moment to review this document before submitting your first pull request. if you have any feature suggestion or improvement, freely to open any discussion or contact me.
 ## Guide
 ### Fork this repo
 You can fork this repo by clicking the fork button in the top right corner of this page.
@@ -59,9 +58,6 @@ the following categories:
 If you are interested in the detailed specification you can visit
 https://www.conventionalcommits.org/ or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
-
-## Request for new feature
-if you have any suggestion, freely to open any discussion.
 
 ## Note
 The test cases have not been entirely completed. If you'd like to assist in generating test cases, I would greatly appreciate it.
