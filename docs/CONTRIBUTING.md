@@ -62,3 +62,6 @@ https://www.conventionalcommits.org/ or check out the
 
 ## Request for new feature
 if you have any suggestion, freely to open any discussion.
+
+## Note
+The test cases have not been entirely completed. If you'd like to assist in generating test cases, I would greatly appreciate it.

@@ -31,14 +31,14 @@ test('custom on modifier', () =>
 
 test('on hover modifier', () =>
 {
-  expect(twOnHover('text-red-500 underline')).toBe('hover:text-red-500 hover:underline');
-  expect(twOnHover('text-red-500 underline', 'bg-green-500 font-bold')).toBe('hover:text-red-500 hover:underline hover:bg-green-500 hover:font-bold');
+  expect(twOnHover('bg-blue-500 text-white ring ring-white')).toBe('hover:bg-blue-500 hover:text-white hover:ring hover:ring-white');
+  expect(twOnHover('bg-blue-500 text-white', 'ring ring-white')).toBe('hover:bg-blue-500 hover:text-white hover:ring hover:ring-white');
 });
 
 test('on focus modifier', () =>
 {
-  expect(twOnFocus('text-red-500 underline')).toBe('focus:text-red-500 focus:underline');
-  expect(twOnFocus('text-red-500 underline', 'bg-green-500 font-bold')).toBe('focus:text-red-500 focus:underline focus:bg-green-500 focus:font-bold');
+  expect(twOnFocus('outline-none ring ring-violet-300')).toBe('focus:outline-none focus:ring focus:ring-violet-300');
+  expect(twOnFocus('outline-none ring ring-violet-300', 'bg-violet-600 text-white')).toBe('focus:outline-none focus:ring focus:ring-violet-300 focus:bg-violet-600 focus:text-white');
 });
 
 test('on active modifier', () =>
