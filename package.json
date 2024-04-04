@@ -11,7 +11,7 @@
     "classes",
     "className",
     "classList"
-],
+  ],
   "description": "Group Tailwind CSS Classes & States",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
