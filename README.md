@@ -18,10 +18,10 @@ npm install tailwind-group
 ```
 
 ## Documentation
-For detailed usage instructions, examples, and API reference, please refer to the [Documentation](https://github.com/jeffjuann/tailwind-group/blob/main/docs/DOCS.md).
+For detailed usage instructions, examples, and API reference, please refer to the [Documentation](https://github.com/jeffjuann/tailwind-group/tree/main/docs/DOCS.md).
 
 ## Contributing
-Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change. See [CONTRIBUTING.md](https://github.com/jeffjuann/tailwind-group/blob/main/docs/CONTRIBUTING.md) for more information.
+Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change. See [CONTRIBUTING.md](https://github.com/jeffjuann/tailwind-group/tree/main/docs/CONTRIBUTING.md) for more information.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/jeffjuann/tailwind-group/tree/main/LICENSE) file for details.
