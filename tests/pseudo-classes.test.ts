@@ -107,8 +107,6 @@ test('on group focus modifier', () =>
   expect(twOnGroupFocus('text-red-500 underline', 'bg-green-500 font-bold')).toBe('group-focus:text-red-500 group-focus:underline group-focus:bg-green-500 group-focus:font-bold');
 });
 
-// generate with many functions (twOnSibling twOnSiblingHover twOnSiblingFocus twOnChild twOnHas twOnGroupHas twOnGroupSiblingHas)
-
 test('on sibling modifier', () =>
 {
   expect(twOnSibling('active', 'text-red-500 underline')).toBe('peer-active:text-red-500 peer-active:underline');
@@ -147,6 +145,6 @@ test('on group has modifier', () =>
 
 test('on sibling has modifier', () =>
 {
-  expect(twOnSiblingHas('[a]', 'text-red-500 underline')).toBe('peer-has-[a]:text-red-500 peer-has-[a]:underline');
-  expect(twOnSiblingHas('[a]', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer-has-[a]:text-red-500 peer-has-[a]:underline peer-has-[a]:bg-green-500 peer-has-[a]:font-bold');
+  expect(twOnSiblingHas('[p]', 'text-red-500 underline')).toBe('peer-has-[a]:text-red-500 peer-has-[a]:underline');
+  expect(twOnSiblingHas('[p]', 'text-red-500 underline', 'bg-green-500 font-bold')).toBe('peer-has-[a]:text-red-500 peer-has-[a]:underline peer-has-[a]:bg-green-500 peer-has-[a]:font-bold');
 });
