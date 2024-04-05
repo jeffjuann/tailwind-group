@@ -1,11 +1,12 @@
 import { twMerge } from "tailwind-merge";
 import { ClassNameValue } from "./types";
+import clsx from "clsx";
 
 export function twOn(state: string, ...classNames: ClassNameValue[]): string
 {
   if(classNames.length === 0) return '';
 
-  if(state === '') return twMerge(...classNames);
+  if(state === '') return twMerge(clsx(...classNames));
 
   const classNameResult: string = classNames.reduce(
     (acc: string, className: ClassNameValue) =>
@@ -23,7 +24,7 @@ export function twOn(state: string, ...classNames: ClassNameValue[]): string
           .reduce(
             (acc: string, className: string) =>
             {
-              return `${acc} ${state}:${className}`;
+              return twMerge(acc, `${state}::${className}`);
             }, '' as string);
         return twMerge(acc, result);
       }
@@ -33,5 +34,5 @@ export function twOn(state: string, ...classNames: ClassNameValue[]): string
       }
     }, '' as string);
 
-  return classNameResult;
+  return twMerge(clsx(classNameResult));
 }

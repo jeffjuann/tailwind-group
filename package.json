@@ -13,8 +13,6 @@
     "classList"
   ],
   "description": "Group Tailwind CSS Classes & States",
-  "repository": "https://github.com/jeffjuann/tailwind-group/",
-  "homepage": "https://github.com/jeffjuann/tailwind-group/",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -37,6 +35,8 @@
     "typescript": "^5.4.3"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
+    "react-native": "^0.73.6",
     "tailwind-merge": "^2.2.2"
   }
 }
