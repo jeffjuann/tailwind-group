@@ -1,18 +1,19 @@
 import { twMerge } from "tailwind-merge";
-import { ClassNameValue } from "./types";
+import { ClassNameValue } from "../types";
+import { resolveVariant } from "../utils/variant-resolver";
 
-export function twOn(state: string, ...classNames: ClassNameValue[]): string
+export function twOn(variant: string, ...classNames: ClassNameValue[]): string
 {
   if(classNames.length === 0) return '';
 
-  if(state === '') return twMerge(...classNames);
+  if(variant === '') return twMerge(...classNames);
 
   const classNameResult: string = classNames.reduce(
     (acc: string, className: ClassNameValue) =>
     {
       if(Array.isArray(className))
       {
-        const result: string = twOn(state, ...className);
+        const result: string = twOn(variant, ...className);
         return twMerge(acc, result);
       }
       else if(typeof className === 'string')
@@ -23,7 +24,7 @@ export function twOn(state: string, ...classNames: ClassNameValue[]): string
           .reduce(
             (acc: string, className: string) =>
             {
-              return twMerge(acc, `${state}:${className}`);
+              return twMerge(acc, resolveVariant(variant, className, { type: "custom" }));
             }, '' as string);
         return twMerge(acc, result);
       }

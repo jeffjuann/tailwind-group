@@ -1,5 +1,5 @@
-import { addDefaultVariant, addVariant } from "./assign-variants";
-import { getDefaultClasses, getGroupedClasses, getGroupclassNames } from "./regex-parser";
+import { resolveVariant } from "./utils/variant-resolver";
+import { getDefaultClasses, getGroupedClasses, getGroupclassNames } from "./utils/regex-parser";
 
 export function twExtractor(extensions: string[])
 {
@@ -32,7 +32,7 @@ export function mainExtractor(content: string): string[]
         {
           classNames.forEach((className) => 
           {
-            if(className !== '') twClassNames.push(addDefaultVariant(variant, className));
+            if(className !== '') twClassNames.push(resolveVariant(variant, className, { type: 'custom' }));
           });
         }
       }
@@ -40,7 +40,7 @@ export function mainExtractor(content: string): string[]
       {
         classNames.forEach((className) => 
         {
-          if(className !== '') twClassNames.push(addVariant(variant, className));
+          if(className !== '') twClassNames.push(resolveVariant(variant, className));
         });
       }
     });

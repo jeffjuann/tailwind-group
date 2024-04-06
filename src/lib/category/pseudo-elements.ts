@@ -1,5 +1,5 @@
-import { twOn } from "./tw-group";
-import { ClassNameValue } from "./types";
+import { twOn } from "../core/tw-group";
+import { ClassNameValue } from "../types";
 
 /**
  * 

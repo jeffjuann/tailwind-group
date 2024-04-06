@@ -5,10 +5,12 @@
 Efficiently group Tailwind CSS variants
 
 ```ts
-TwOn("hover", "bg-blue-500");
+TwOn("hover", "bg-neutral-900 font-white"); // hover:bg-enutral-900 hover:font-white
 ```
 
-Streamline the grouping of TailwindCSS state modifiers with tailwind-group. This package facilitates the consolidation of disparate Tailwind CSS class strings into concise and legible formats, ensuring optimal readability and maintainability of your codebase.
+`tailwind-group` is a package designed to efficiently group Tailwind CSS variants, facilitating the consolidation of disparate Tailwind CSS class strings into concise and legible formats, ensuring optimal readability and maintainability of your codebase.
+
+As this package is still in development, if you encounter any bugs or broken functionalities, please don't hesitate to open an issue. Your feedback is valuable, and we're committed to addressing any issues promptly to ensure the package works smoothly. Thank you for your support and patience.
 
 This package uses [tailwind-merge](https://github.com/dcastil/tailwind-merge) package to provide composition feature. Please use and see [tailwind-merge](https://github.com/dcastil/tailwind-merge) package for more Merging, Composition and Performace Features.
 
@@ -38,18 +40,29 @@ const config = {
 
 export default config
 ```
-### Use tailwind-group in your code
+
+### Usage
 ```ts
  twOn("hover", "bg-blue-500") 
  // or
  twOnHover("bg-blue-500")
 ```
 
+#### Don't Do This
+```ts
+import { twOnHover as onHover } from 'tailwind-group'
+```
+This package operates by customizing the Tailwind classes detection in your codebase. It detects particular patterns such as `twOn`, `twOnHover`, and other patterns within your code.
+```ts
+  twOn('hover', 'bg-sky-500', twOn('dark', 'bg-sky-700'))  
+```
+Currently, `tailwind-group` does not support nested functions.
+
 ## Documentation
-For detailed usage instructions, examples, and API reference, please refer to the [Documentation](https://github.com/jeffjuann/tailwind-group/blob/main/docs/DOCS.md).
+For detailed usage instructions, examples, and API reference, please refer to the [Documentation](docs/DOCS.md).
 
 ## Contributing
-Contributions are welcome! For major changes, please open an issue first to discuss what you would like to change. See [CONTRIBUTING.md](https://github.com/jeffjuann/tailwind-group/blob/main/docs/CONTRIBUTING.md) for more information.
+Contributions are welcome! Please open an issue or discussion first to discuss what you would like to change. See [CONTRIBUTING](docs/CONTRIBUTING.md) for more information.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/jeffjuann/tailwind-group/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

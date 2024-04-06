@@ -1,5 +1,8 @@
 # Contribution Guide
 Thanks for your interest in contributing to tailwind-group. We're happy to have you here. Please take a moment to review this document before submitting your first pull request. if you have any feature suggestion or improvement, freely to open any discussion or contact me.
+
+While this package is still undergoing development, if you encounter any bugs or broken functionalities, please don't hesitate to open an issue. Your feedback is valuable, and we're committed to addressing any issues promptly to ensure the package works smoothly. Thank you for your support and patience. Additionally, please note that the test cases have not been fully completed yet. If you're interested in contributing by generating test cases, your assistance would be greatly appreciated.
+
 ## Guide
 ### Fork this repo
 You can fork this repo by clicking the fork button in the top right corner of this page.
@@ -58,6 +61,3 @@ the following categories:
 If you are interested in the detailed specification you can visit
 https://www.conventionalcommits.org/ or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
-
-## Note
-The test cases have not been entirely completed. If you'd like to assist in generating test cases, I would greatly appreciate it.
