@@ -1,6 +1,6 @@
 {
   "name": "tailwind-group",
-  "version": "0.1.5",
+  "version": "0.1.9",
   "keywords": [
     "tailwindcss",
     "tailwind",
@@ -13,6 +13,7 @@
     "classList"
   ],
   "description": "Group Tailwind CSS Classes & States",
+  "repository": "https://github.com/jeffjuann/tailwind-group/",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

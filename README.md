@@ -5,7 +5,7 @@
 Efficiently group Tailwind CSS variants
 
 ```ts
-TwOn("hover", "bg-neutral-900 font-white"); // hover:bg-enutral-900 hover:font-white
+TwOn("hover", "bg-neutral-900 font-white"); // hover:bg-neutral-900 hover:font-white
 ```
 
 `tailwind-group` is a package designed to efficiently group Tailwind CSS variants, facilitating the consolidation of disparate Tailwind CSS class strings into concise and legible formats, ensuring optimal readability and maintainability of your codebase.

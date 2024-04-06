@@ -1,14 +1,14 @@
 # Documentation
 
 ```ts
-twOn('hover', 'bg-neutral-900 font-white') // hover:bg-enutral-900 hover:font-white
+twOn('hover', 'bg-neutral-900 font-white') // hover:bg-neutral-900 hover:font-white
 twOn('lg:[&:nth-child(3)]', 'bg-blue-100') // lg:[&:nth-child(3)]:bg-blue-100
 twOn('focus', 'bg-gray-200', 'outline') // focus:bg-gray-200 focus:outline  
 ```
 
 ### On Custom modifier
 ```ts
-twOn('hover', 'bg-neutral-900 font-white') // hover:bg-enutral-900 hover:font-white
+twOn('hover', 'bg-neutral-900 font-white') // hover:bg-neutral-900 hover:font-white
 ```
 
 ## Pseudo-classes
