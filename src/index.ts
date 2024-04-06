@@ -1,7 +1,4 @@
 
 export { twOn } from './lib/tw-group';
-
-export * from './lib/pseudo-classes';
-export * from './lib/pseudo-elements';
-export * from './lib/media-queries';
-export * from './lib/attribute-selectors';
+export { twExtractor } from './lib/extractor'
+export { twOnHover, twOnFocus, twOnActive } from './lib/pseudo-classes';
