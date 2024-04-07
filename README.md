@@ -1,6 +1,11 @@
-# tailwind-group
+<h1 align="center">tailwind-group</h1>
+
+<div align="center">
+
 [![npm version](https://img.shields.io/npm/v/tailwind-group.svg?style=flat-square)](https://www.npmjs.com/package/tailwind-group)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jeffjuann/tailwind-group/blob/main/LICENSE)
+
+</div>
 
 Efficiently group Tailwind CSS variants
 
@@ -13,6 +18,8 @@ TwOn("hover", "bg-neutral-900 font-white"); // hover:bg-neutral-900 hover:font-w
 As this package is still in development, if you encounter any bugs or broken functionalities, please don't hesitate to open an issue. Your feedback is valuable, and we're committed to addressing any issues promptly to ensure the package works smoothly. Thank you for your support and patience.
 
 This package uses [tailwind-merge](https://github.com/dcastil/tailwind-merge) package to provide composition feature. Please use and see [tailwind-merge](https://github.com/dcastil/tailwind-merge) package for more Merging, Composition and Performace Features.
+
+> 🚧 Attention: This npm package is experimental and currenlt under active development
 
 ## Installation
 ### Install Package
