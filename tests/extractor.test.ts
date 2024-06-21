@@ -2,124 +2,42 @@ import {
   mainExtractor,
 } from "../src/lib/extractor";
 
-test('twOn hover extract test', () =>
+test('single nested grouping', () =>
 {
-  expect(mainExtractor("twOn('hover', 'bg-blue-500 text-white', 'underline')")).toContain('hover:bg-blue-500');
-  expect(mainExtractor("twOn('hover', 'bg-blue-500 text-white', 'underline')")).toContain('hover:text-white');
-  expect(mainExtractor("twOn('hover', 'bg-blue-500 text-white', 'underline')")).toContain('hover:underline');
+  expect(mainExtractor("hover:(bg-blue-500|text-white)")).toContain('hover:bg-blue-500');
+  expect(mainExtractor("hover:(bg-blue-500|text-white)")).toContain('hover:text-white');
+
+  expect(mainExtractor("dark:(bg-blue-500|text-white|font-bold|text-8xl)")).toContain('dark:bg-blue-500');
+  expect(mainExtractor("dark:(bg-blue-500|text-white|font-bold|text-8xl)")).toContain('dark:text-white');
+  expect(mainExtractor("dark:(bg-blue-500|text-white|font-bold|text-8xl)")).toContain('dark:font-bold');
+  expect(mainExtractor("dark:(bg-blue-500|text-white|font-bold|text-8xl)")).toContain('dark:text-8xl');
 });
 
-test('twOn custom extract test', () =>
+test('double nested grouping', () =>
 {
-  expect(mainExtractor("twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=open]:animate-in');
-  expect(mainExtractor("twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=closed]:animate-out');
-  expect(mainExtractor("twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=closed]:fade-out-0');
-  expect(mainExtractor("twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=open]:fade-in-0');
-});
-
-test('twOnHover extract test', () =>
-{
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnHover('bg-red-500', 'border-2')"))
-    .toContain('hover:bg-blue-500');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnHover('bg-red-500', 'border-2')"))
-    .toContain('hover:text-white');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnHover('bg-red-500', 'border-2')"))
-    .toContain('hover:underline');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnHover('bg-red-500', 'border-2')"))
-    .toContain('hover:bg-red-500');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnHover('bg-red-500', 'border-2')"))
-    .toContain('hover:border-2');
-});
-
-test('twOnFocus extract test', () =>
-{
-  expect(mainExtractor("twOnFocus('ring-ring', 'ring-blue-500') .... twOnFocus('outline-none')"))
-    .toContain('focus:ring-ring');
-  expect(mainExtractor("twOnFocus('ring-ring', 'ring-blue-500') .... twOnFocus('outline-none')"))
-    .toContain('focus:ring-blue-500');
-  expect(mainExtractor("twOnFocus('ring-ring', 'ring-blue-500') .... twOnFocus('outline-none')"))
-    .toContain('focus:outline-none');
-});
-
-test('twOnActive extract test', () =>
-{
-  expect(mainExtractor("twOnActive('bg-blue-900') .... twOnActive('bg-violet-700')"))
-    .toContain('active:bg-blue-900');
-  expect(mainExtractor("twOnActive('bg-blue-900') .... twOnActive('bg-violet-700')"))
-    .toContain('active:bg-violet-700');
-});
-
-test('combined twOn extract test', () =>
-{
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('hover:bg-blue-500');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('hover:text-white');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('hover:underline');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('active:bg-violet-700');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('focus:ring-ring');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('focus:ring-blue-500');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=open]:animate-in');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=closed]:animate-out');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=open]:fade-in-0');
-  expect(mainExtractor("twOnHover('bg-blue-500 text-white', 'underline') .... twOnActive('bg-violet-700') ... twOnFocus('ring-ring', 'ring-blue-500') ... twOn('data-[state=open]', 'animate-in fade-in-0') .... twOn('data-[state=closed]', 'animate-out fade-out-0')"))
-    .toContain('data-[state=closed]:fade-out-0');
-
-});
-
-// With Quote
-
-test('twOn hover extract test', () =>
-  {
-    expect(mainExtractor("twOn(\"hover\", \"bg-blue-500 text-white\", \"underline\")")).toContain('hover:bg-blue-500');
-    expect(mainExtractor("twOn(\"hover\", \"bg-blue-500 text-white\", \"underline\")")).toContain('hover:text-white');
-    expect(mainExtractor("twOn(\"hover\", \"bg-blue-500 text-white\", \"underline\")")).toContain('hover:underline');
-  });
+  expect(mainExtractor("hover:(bg-blue-500|dark:(text-white))")).toContain('hover:bg-blue-500');
+  expect(mainExtractor("hover:(bg-blue-500|dark:(text-white))")).toContain('hover:dark:text-white');
   
-  test('twOn custom extract test', () =>
-  {
-    expect(mainExtractor("twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=open]:animate-in');
-    expect(mainExtractor("twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=closed]:animate-out');
-    expect(mainExtractor("twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=closed]:fade-out-0');
-    expect(mainExtractor("twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=open]:fade-in-0');
-  });
+  expect(mainExtractor("hover:(focus:(bg-blue-500)|dark:(text-white))")).toContain('hover:focus:bg-blue-500');
+  expect(mainExtractor("hover:(focus:(bg-blue-500)|dark:(text-white))")).toContain('hover:dark:text-white');
+});
+
+test('triple nested grouping', () =>
+{
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500))|dark:(text-white))")).toContain('hover:focus:md:bg-blue-500');
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500))|dark:(text-white))")).toContain('hover:dark:text-white');
   
-  test('combined twOn extract test', () =>
-  {
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('hover:bg-blue-500');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('hover:text-white');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('hover:underline');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('active:bg-violet-700');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('focus:ring-ring');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('focus:ring-blue-500');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=open]:animate-in');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=closed]:animate-out');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=open]:fade-in-0');
-    expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
-      .toContain('data-[state=closed]:fade-out-0');
-  
-  });
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500))|dark:(xl:(text-white)))")).toContain('hover:focus:md:bg-blue-500');
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500))|dark:(xl:(text-white)))")).toContain('hover:dark:xl:text-white');
+
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500|text-red-600))|dark:(text-white)|xl:(font-bold))")).toContain('hover:focus:md:bg-blue-500');
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500|text-red-600))|dark:(text-white)|xl:(font-bold))")).toContain('hover:focus:md:text-red-600');
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500|text-red-600))|dark:(text-white)|xl:(font-bold))")).toContain('hover:dark:text-white');
+  expect(mainExtractor("hover:(focus:(md:(bg-blue-500|text-red-600))|dark:(text-white)|xl:(font-bold))")).toContain('hover:xl:font-bold');
+});
+
+
+test('triple nested grouping', () =>
+{
+
+});

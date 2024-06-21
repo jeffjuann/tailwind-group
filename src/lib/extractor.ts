@@ -1,5 +1,5 @@
 import { resolveVariant } from "./utils/variant-resolver";
-import { getDefaultClasses, getGroupedClasses, getGroupclassNames } from "./utils/regex-parser";
+import { getDefaultClasses, getGroupedClasses, getGroupclassNames, isGroupclassNames } from "./utils/regex-parser";
 
 export function twExtractor(extensions: string[])
 {
@@ -21,31 +21,33 @@ export function mainExtractor(content: string): string[]
   { 
     twGroups.forEach((group: string) =>
     {
-      const [variant, params] = group.split('(');
-      console.log(variant, params);
-      const classNames = getGroupclassNames(params);
-
-      if(variant === 'twOn' && classNames)
-      {
-        const variant = classNames.shift();
-        if(variant)
-        {
-          classNames.forEach((className) => 
-          {
-            if(className !== '') twClassNames.push(resolveVariant(variant, className, { type: 'custom' }));
-          });
-        }
-      }
-      else if(classNames)
-      {
-        classNames.forEach((className) => 
-        {
-          if(className !== '') twClassNames.push(resolveVariant(variant, className));
-        });
-      }
+      groupExtractor(twClassNames, group);
     });
   }
   
   return twClassNames;
 }
 
+function groupExtractor(container: string[], group: string, prefixVariant?: string)
+{
+  const splitIndex = group.indexOf(':(');
+  const presentVariant = group.slice(0, splitIndex);
+  const classes = group.slice(splitIndex + 2);
+  const variant = prefixVariant ? `${prefixVariant}:${presentVariant}` : presentVariant;
+  const classNames = getGroupclassNames(classes);
+  if(classNames)
+  {
+    classNames.forEach((className) =>
+    {
+      const group = isGroupclassNames(className);
+      if(group)
+      {
+        groupExtractor(container, className, variant);
+      }
+      else if(className)
+      {
+        container.push(resolveVariant(variant, className));
+      }
+    })
+  }
+}
