@@ -22,7 +22,6 @@ export function mainExtractor(content: string): string[]
     twGroups.forEach((group: string) =>
     {
       const [variant, params] = group.split('(');
-      console.log(variant, params);
       const classNames = getGroupclassNames(params);
 
       if(variant === 'twOn' && classNames)

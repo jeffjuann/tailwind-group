@@ -121,5 +121,4 @@ test('twOn hover extract test', () =>
       .toContain('data-[state=open]:fade-in-0');
     expect(mainExtractor("twOnHover(\"bg-blue-500 text-white\", \"underline\") .... twOnActive(\"bg-violet-700\") ... twOnFocus(\"ring-ring\", \"ring-blue-500\") ... twOn(\"data-[state=open]\", \"animate-in fade-in-0\") .... twOn(\"data-[state=closed]\", \"animate-out fade-out-0\")"))
       .toContain('data-[state=closed]:fade-out-0');
-  
   });
